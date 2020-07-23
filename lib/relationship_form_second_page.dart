@@ -31,6 +31,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
+    final String todo = ModalRoute.of(context).settings.arguments;
+    print(todo);
     return Scaffold(
       appBar: AppBar(
         title: Text('Retrieve Text Input'),
@@ -39,7 +41,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("balls  "),
+            Text("Тогда я чувствую себя  "),
             TextField(
               controller: myController,
             ),

@@ -41,7 +41,7 @@ class MyHome extends StatelessWidget {
   }
 }
 
-/*class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() {
     return _MyHomePageState();
@@ -112,4 +112,4 @@ class Record {
 
   @override
   String toString() => "Record<$name:$votes>";
-}*/
+}
