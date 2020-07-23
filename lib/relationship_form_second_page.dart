@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class RelationshipForm extends StatelessWidget {
+class RelationshipFormSecond extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: MyCustomForm()
+      body: MyCustomForm(),
     );
   }
 }
@@ -39,7 +39,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("Когда ты  "),
+            Text("balls  "),
             TextField(
               controller: myController,
             ),
@@ -47,7 +47,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
                 child: RaisedButton(
                   child: Text("Дальше"),
-                  onPressed: () => Navigator.of(context).pushNamed('/relationshipFormSecondPage'),
+                  onPressed: () => print("stuff"),
                 )),
           ],
         ),

@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mental_health_app/relationship_form_second_page.dart';
 import 'package:mental_health_app/relationship_problem_form.dart';
 
 void main() {
   runApp(MaterialApp(
     home: MyApp(), // becomes the route named '/'
     routes: <String, WidgetBuilder> {
-      '/relationshipForm': (BuildContext context) => RelationshipFormScreen()
+      '/relationshipFormFirstPage': (BuildContext context) => RelationshipForm(),
+      '/relationshipFormSecondPage': (BuildContext context) => RelationshipFormSecond()
+
     },
   ));
 }
@@ -29,7 +32,7 @@ class MyHome extends StatelessWidget {
         Text('My thoughts form', style: TextStyle(height: 5, fontSize: 10)),
         Text('Stuff', style: TextStyle(height: 5, fontSize: 10)),
         GestureDetector(
-          onTap: ()  => Navigator.of(context).pushNamed('/relationshipForm'),
+          onTap: ()  => Navigator.of(context).pushNamed('/relationshipFormFirstPage'),
           child: Text('Relationship form',
               style: TextStyle(height: 5, fontSize: 10)),
         )
