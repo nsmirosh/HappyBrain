@@ -1,15 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form/relationship_form_second_page.dart';
-import 'package:mental_health_app/relationship_form/relationship_problem_form.dart';
+import 'package:mental_health_app/relationship_form/first_page.dart';
+import 'package:mental_health_app/relationship_form/form_naming_page.dart';
 
 void main() {
   runApp(MaterialApp(
     home: MyApp(), // becomes the route named '/'
     routes: <String, WidgetBuilder> {
-      '/relationshipFormFirstPage': (BuildContext context) => RelationshipForm(),
-      '/relationshipFormSecondPage': (BuildContext context) => RelationshipFormSecond()
-
+      '/relationshipFormFirstPage': (BuildContext context) => RelationshipForm()
     },
   ));
 }

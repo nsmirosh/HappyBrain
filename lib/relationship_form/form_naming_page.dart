@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form/relationship_form_second_page.dart';
+import 'package:mental_health_app/relationship_form/first_page.dart';
 
 import 'models/relationship_problem_form.dart';
 
@@ -74,7 +74,7 @@ _navigateToSecondScreen(BuildContext context, String formName) async {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => RelationshipFormSecond(),
+      builder: (context) => RelationshipFormFirstPage(),
       // Pass the arguments as part of the RouteSettings. The
       // DetailScreen reads the arguments from these settings.
       settings: RouteSettings(
