@@ -1,10 +1,10 @@
-import 'dart:collection';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/relationship_form/relationship_form_second_page.dart';
 
 import 'models/relationship_problem_form.dart';
+
+const RELATIONSHIP_FORM_PATH = 'relationship_forms';
 
 class RelationshipForm extends StatelessWidget {
   @override
@@ -43,7 +43,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("Когда ты  "),
+            Text("Название формы:  "),
             TextField(
               controller: myController,
             ),
@@ -61,20 +61,14 @@ class _MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-_navigateToSecondScreen(BuildContext context, String text) async {
+_navigateToSecondScreen(BuildContext context, String formName) async {
 
-  final hashMap = Map<String, dynamic>();
-  hashMap.putIfAbsent('balls_id', () => 'balls_value');
+  final form = RelationshipProblemForm();
+  form.formName = formName;
 
-  Firestore.instance.collection('relationship_forms').add(RelationshipProblemForm().toMap());
-
-
-
-  /*print('\n \n \n \n STARTING TO READ THE STREAM \n \n \n \n ');
-  await for (var value in snapshot) {
-    final documentsList = value.documents;
-    final step = documentsList.map((document) =>  Question.fromSnapshot(document)).toList();
-    print('\n \n \n \n $step \n \n \n \n ');
+  DocumentReference reference = await Firestore.instance.collection(RELATIONSHIP_FORM_PATH).add(form.toMap());
+  if (reference != null) {
+    print("document ${reference.documentID} succefully created!");
   }
 
   Navigator.push(
@@ -84,10 +78,19 @@ _navigateToSecondScreen(BuildContext context, String text) async {
       // Pass the arguments as part of the RouteSettings. The
       // DetailScreen reads the arguments from these settings.
       settings: RouteSettings(
-        arguments: text,
+        arguments: reference.documentID,
       ),
     ),
-  );*/
+  );
+
+  /*print('\n \n \n \n STARTING TO READ THE STREAM \n \n \n \n ');
+  await for (var value in snapshot) {
+    final documentsList = value.documents;
+    final step = documentsList.map((document) =>  Question.fromSnapshot(document)).toList();
+    print('\n \n \n \n $step \n \n \n \n ');
+  }
+
+  */
 }
 
 
