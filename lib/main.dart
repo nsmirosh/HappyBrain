@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form_second_page.dart';
-import 'package:mental_health_app/relationship_problem_form.dart';
+import 'package:mental_health_app/relationship_form/relationship_form_second_page.dart';
+import 'package:mental_health_app/relationship_form/relationship_problem_form.dart';
 
 void main() {
   runApp(MaterialApp(

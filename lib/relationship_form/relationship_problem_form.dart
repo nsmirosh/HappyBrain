@@ -1,6 +1,10 @@
+import 'dart:collection';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form_second_page.dart';
+import 'package:mental_health_app/relationship_form/relationship_form_second_page.dart';
+
+import 'models/relationship_problem_form.dart';
 
 class RelationshipForm extends StatelessWidget {
   @override
@@ -59,11 +63,17 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
 _navigateToSecondScreen(BuildContext context, String text) async {
 
-  final snapshot = Firestore.instance.collection('relationship_steps').snapshots();
-  print('\n \n \n \n STARTING TO READ THE STREAM \n \n \n \n ');
+  final hashMap = Map<String, dynamic>();
+  hashMap.putIfAbsent('balls_id', () => 'balls_value');
+
+  Firestore.instance.collection('relationship_forms').add(RelationshipProblemForm().toMap());
+
+
+
+  /*print('\n \n \n \n STARTING TO READ THE STREAM \n \n \n \n ');
   await for (var value in snapshot) {
     final documentsList = value.documents;
-    final step = documentsList.map((document) =>  Step.fromSnapshot(document)).toList();
+    final step = documentsList.map((document) =>  Question.fromSnapshot(document)).toList();
     print('\n \n \n \n $step \n \n \n \n ');
   }
 
@@ -77,22 +87,22 @@ _navigateToSecondScreen(BuildContext context, String text) async {
         arguments: text,
       ),
     ),
-  );
+  );*/
 }
 
 
-class Step {
+class Question {
   final String text;
   final int stepNumber;
   final DocumentReference reference;
 
-  Step.fromMap(Map<String, dynamic> map, {this.reference})
+  Question.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['text'] != null),
         assert(map['step'] != null),
         text = map['text'],
         stepNumber = map['step'];
 
-  Step.fromSnapshot(DocumentSnapshot snapshot)
+  Question.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
 
   @override
