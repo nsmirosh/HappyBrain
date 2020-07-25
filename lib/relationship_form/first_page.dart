@@ -28,7 +28,6 @@ class SecondPageMainView extends StatefulWidget {
 }
 
 class _SecondPageMainState extends State<SecondPageMainView> {
-  var isLoading = false;
   final myController = TextEditingController();
 
   @override
@@ -50,10 +49,7 @@ class _SecondPageMainState extends State<SecondPageMainView> {
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
-                child: ProgressOrNextWidget(
-                  text: myController.text,
-                  isLoading: isLoading,
-                ))
+                child: ProgressOrNextWidget(text: myController.text))
           ],
         ),
       ),
@@ -63,13 +59,12 @@ class _SecondPageMainState extends State<SecondPageMainView> {
 
 class ProgressOrNextWidget extends StatefulWidget {
   final String text;
-  var isLoading = false;
 
-  ProgressOrNextWidget({this.text, this.isLoading});
+  ProgressOrNextWidget({this.text});
 
   @override
   ProgressOrNextWidgetState createState() =>
-      ProgressOrNextWidgetState(text: text, isLoading: isLoading);
+      ProgressOrNextWidgetState(text: text);
 }
 
 class ProgressOrNextWidgetState extends State<ProgressOrNextWidget> {
@@ -77,7 +72,7 @@ class ProgressOrNextWidgetState extends State<ProgressOrNextWidget> {
 
   final String text;
 
-  ProgressOrNextWidgetState({this.text, this.isLoading});
+  ProgressOrNextWidgetState({this.text});
 
   @override
   Widget build(BuildContext context) {
