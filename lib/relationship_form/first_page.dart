@@ -16,18 +16,18 @@ class RelationshipFormFirstPage extends StatelessWidget {
     relationshipFormDocId = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      body: MyCustomForm(),
+      body: SecondPageMainView(),
     );
   }
 }
 
 // Define a custom Form widget.
-class MyCustomForm extends StatefulWidget {
+class SecondPageMainView extends StatefulWidget {
   @override
-  _MyCustomFormState createState() => _MyCustomFormState();
+  _SecondPageMainState createState() => _SecondPageMainState();
 }
 
-class _MyCustomFormState extends State<MyCustomForm> {
+class _SecondPageMainState extends State<SecondPageMainView> {
   var isLoading = false;
   final myController = TextEditingController();
 
@@ -50,20 +50,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
-                child: Column(children: <Widget>[
-                  Visibility(
-                      visible: !isLoading,
-                      child: RaisedButton(
-                          child: Text("Дальше"),
-                          onPressed: () {
-                            setState(() {
-                              isLoading = true;
-                            });
-                          }
-                          /*_doSomeStuff(context, myController.text)*/)),
-                  Visibility(
-                      visible: isLoading, child: CircularProgressIndicator())
-                ]))
+                child: ProgressOrNextWidget(
+                  text: myController.text,
+                  isLoading: isLoading,
+                ))
           ],
         ),
       ),
@@ -71,23 +61,40 @@ class _MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-_doSomeStuff(BuildContext context, String text) {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return Dialog(
-        child: new Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            new CircularProgressIndicator(),
-            new Text("Loading"),
-          ],
-        ),
-      );
-    },
-  );
-  _updateSteps(text).then((_) => _navigateToSecondStep(context));
+class ProgressOrNextWidget extends StatefulWidget {
+  final String text;
+  var isLoading = false;
+
+  ProgressOrNextWidget({this.text, this.isLoading});
+
+  @override
+  ProgressOrNextWidgetState createState() =>
+      ProgressOrNextWidgetState(text: text, isLoading: isLoading);
+}
+
+class ProgressOrNextWidgetState extends State<ProgressOrNextWidget> {
+  var isLoading = false;
+
+  final String text;
+
+  ProgressOrNextWidgetState({this.text, this.isLoading});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: <Widget>[
+      Visibility(
+          visible: !isLoading,
+          child: RaisedButton(
+              child: Text("Дальше"),
+              onPressed: () {
+                setState(() {
+                  isLoading = true;
+                });
+                _updateSteps(text).then((_) => _navigateToSecondStep(context));
+              })),
+      Visibility(visible: isLoading, child: CircularProgressIndicator())
+    ]);
+  }
 }
 
 Future<void> _updateSteps(String text) {
