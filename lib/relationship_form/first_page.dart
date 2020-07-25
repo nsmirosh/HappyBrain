@@ -50,11 +50,20 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
-                child: RaisedButton(
-                    child: Text("Дальше"),
-                    onPressed: () => setState(() {
-                          isLoading = true;
-                        }) /*_doSomeStuff(context, myController.text)*/))
+                child: Column(children: <Widget>[
+                  Visibility(
+                      visible: !isLoading,
+                      child: RaisedButton(
+                          child: Text("Дальше"),
+                          onPressed: () {
+                            setState(() {
+                              isLoading = true;
+                            });
+                          }
+                          /*_doSomeStuff(context, myController.text)*/)),
+                  Visibility(
+                      visible: isLoading, child: CircularProgressIndicator())
+                ]))
           ],
         ),
       ),
@@ -63,7 +72,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 
 _doSomeStuff(BuildContext context, String text) {
-
   showDialog(
     context: context,
     barrierDismissible: false,
