@@ -11,6 +11,10 @@ var relationshipFormDocId = '';
 const STEP_NO = 1;
 
 class RelationshipFormFirstPage extends StatelessWidget {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     relationshipFormDocId = ModalRoute.of(context).settings.arguments;
@@ -28,11 +32,11 @@ class SecondPageMainView extends StatefulWidget {
 }
 
 class _SecondPageMainState extends State<SecondPageMainView> {
-  final myController = TextEditingController();
+  final controller = TextEditingController();
 
   @override
   void dispose() {
-    myController.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -45,11 +49,11 @@ class _SecondPageMainState extends State<SecondPageMainView> {
           children: <Widget>[
             Text("Когда ты  "),
             TextField(
-              controller: myController,
+              controller: controller,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
-                child: ProgressOrNextWidget(text: myController.text))
+                child: ProgressOrNextWidget(text: controller.text))
           ],
         ),
       ),

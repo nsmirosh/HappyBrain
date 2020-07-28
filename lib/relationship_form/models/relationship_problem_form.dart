@@ -4,6 +4,8 @@ const FORM_STEPS_FIELD = 'formSteps';
 
 class RelationshipProblemForm {
   final List<FormStep> steps = List();
+
+  RelationshipProblemForm({this.formName});
   var completed = false;
   var formName = '';
   var creationTime = '';

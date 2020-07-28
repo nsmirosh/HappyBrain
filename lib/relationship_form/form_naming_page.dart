@@ -13,22 +13,16 @@ class RelationshipForm extends StatelessWidget {
   }
 }
 
-// Define a custom Form widget.
 class MyCustomForm extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
 class _MyCustomFormState extends State<MyCustomForm> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
   final myController = TextEditingController();
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
   }
@@ -62,11 +56,15 @@ class _MyCustomFormState extends State<MyCustomForm> {
 }
 
 _navigateToSecondScreen(BuildContext context, String formName) async {
-
-  final form = RelationshipProblemForm();
-  form.formName = formName;
-
-  DocumentReference reference = await Firestore.instance.collection(RELATIONSHIP_FORM_PATH).add(form.toMap());
+  DocumentReference reference;
+  try {
+    print('firestore called');
+    reference = await Firestore.instance
+        .collection(RELATIONSHIP_FORM_PATH)
+        .add(RelationshipProblemForm(formName: formName).toMap());
+  } catch (e) {
+    print('ERROR ERROR ERROR!!!: ${e.toString()}');
+  }
   if (reference != null) {
     print("document ${reference.documentID} succefully created!");
   }
@@ -92,7 +90,6 @@ _navigateToSecondScreen(BuildContext context, String formName) async {
 
   */
 }
-
 
 class Question {
   final String text;
