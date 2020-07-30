@@ -1,19 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form/form_naming_page.dart';
-import 'package:mental_health_app/relationship_form/second_page.dart';
+import 'package:mental_health_app/relationship_form/ui/form_naming_page.dart';
+import 'package:mental_health_app/relationship_form/ui/second_page.dart';
 
-import 'models/relationship_problem_form.dart';
-import 'models/relationship_problem_form_step.dart';
+import '../models/relationship_problem_form.dart';
+import '../models/relationship_problem_form_step.dart';
 
 var relationshipFormDocId = '';
 
 const STEP_NO = 1;
 
 class RelationshipFormFirstPage extends StatelessWidget {
-
-
-
 
   @override
   Widget build(BuildContext context) {

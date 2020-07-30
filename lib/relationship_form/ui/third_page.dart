@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_health_app/relationship_form/form_naming_page.dart';
+import 'package:mental_health_app/relationship_form/ui/form_naming_page.dart';
 import 'package:mental_health_app/relationship_form/models/relationship_problem_form.dart';
 
-import 'models/relationship_problem_form_step.dart';
+import '../models/relationship_problem_form_step.dart';
 
 var relationshipFormDocId = '';
 
-const STEP_NO = 2;
+const STEP_NO = 3;
 
 class RelationshipFormSecond extends StatelessWidget {
   @override
@@ -45,7 +45,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("Тогда я чувствую себя"),
+            Text("Потому что я думаю,  что"),
             TextField(
               controller: myController,
             ),
