@@ -1,6 +1,14 @@
 # Happy Brain 
 
-An app that should keep your relationships and brain happy. The app will contain certain questoinnaires and forms that you can fill out and share with other people (your partner / therapist, etc.). The app keeps track of the the forms filled out and saves the onces that are not completed for further completion. The app backend and authorization is done via Firestore. 
+An app that should keep your relationships and brain happy. 
+
+
+Some functionality that the app contains:
+
+* a list of predefined questoinnaires and forms that you can fill out
+* the ability to share that information with other users of the app (your partner / therapist, etc.)
+* keeping track of the the forms that were filled completely out and saving those that are not completed for further completion
+* backend and authorization implementation via Firebase/Firestore
 
 
 ## Getting Started
