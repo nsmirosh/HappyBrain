@@ -44,12 +44,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 Text("Название формы:  "),
                 TextFormField(
                   controller: myController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Это поле не может быть пустым';
-                    }
-                    return null;
-                  },
+                  validator: _myFormFieldValidator,
                 ),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
@@ -98,6 +93,15 @@ _navigateToSecondScreen(BuildContext context, String formName) async {
   }
 
   */
+}
+
+String _myFormFieldValidator(String value) {
+  {
+    if (value.isEmpty) {
+      return 'Это поле не может быть пустым';
+    }
+    return null;
+  }
 }
 
 class Question {
