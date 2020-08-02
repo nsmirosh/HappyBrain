@@ -1,6 +1,6 @@
 # Happy Brain 
 
-An app that should keep your relationships and brain happy. 
+An app written in Flutter that should keep your relationships and brain happy. 
 
 
 Some functionality that the app contains:
