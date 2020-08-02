@@ -39,13 +39,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
-                  Text("Название формы:  "),
+                  Text("Form name:  "),
                   TextFormField(
                     controller: myController,
                     validator: (toValidate) => validateNotEmpty(toValidate),
                   ),
                   RaisedButton(
-                      child: Text("Дальше"),
+                      child: Text("Next"),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           _navigateToFormScreen(context, myController.text);

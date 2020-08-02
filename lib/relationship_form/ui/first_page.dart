@@ -44,7 +44,7 @@ class _SecondPageMainState extends State<SecondPageMainView> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("Когда ты  "),
+            Text("When you  "),
             TextField(
               controller: controller,
             ),
@@ -52,7 +52,8 @@ class _SecondPageMainState extends State<SecondPageMainView> {
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
                 child: ProgressOrNextWidget(
                   textController: controller,
-                  callback: (text) => _updateSteps(text),
+                  callback: (text) =>
+                      _updateSteps(text).then(_navigateToSecondStep(context)),
                 ))
           ],
         ),
@@ -61,15 +62,14 @@ class _SecondPageMainState extends State<SecondPageMainView> {
   }
 }
 
-/*Future<void>*/
-void _updateSteps(String text) {
-  Firestore.instance
+Future<void> _updateSteps(String text) {
+  return Firestore.instance
       .collection(RELATIONSHIP_FORM_PATH)
       .document(relationshipFormDocId)
       .updateData({
     FORM_STEPS_FIELD:
         List.filled(1, FormStep(stepNo: STEP_NO, answerText: text).toMap())
-  }).then((_) => print("\n \n \n \ndata updated!\n \n \n \n"));
+  });
 }
 
 _navigateToSecondStep(BuildContext context) {

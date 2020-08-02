@@ -45,14 +45,14 @@ class _MyCustomFormState extends State<MyCustomForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Text("Тогда я чувствую себя"),
+            Text("Then I feel as"),
             TextField(
               controller: myController,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(0, 40.0, 0, 0),
                 child: RaisedButton(
-                  child: Text("Дальше"),
+                  child: Text("Next"),
                   onPressed: () => _onButtonPress(myController.text),
                 )),
           ],
